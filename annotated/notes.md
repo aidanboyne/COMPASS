@@ -4,12 +4,44 @@ A ground up guide to COMPASS
 
 ## Linux
 
-COMPASS is designed to be used via the Linux _shell_. It is similar to command prompt and terminal 
+COMPASS is designed to be used via the Linux _shell_ (specifically the bash shell). It is similar to command prompt and terminal 
 but includes a lot of nice features. _Shell scripts_ are files containing a line of commands that are fed
 into the shell. These scripts make use of familiar coding elements to preform a large number of tasks
 quickly and accuratley. I found [this](https://www.tutorialspoint.com/unix/shell_scripting.htm) website helpful
 when getting started with the shell, but there are many other resoureces available. Some concepts that are 
 used extensivley by COMPASS are included below.
+
+Searching for and using files in shell is dependent on **regex** (regular expression) terminology. There are also several 
+prefixes to specify file type
+
+| Symbol        | Filetype      |
+| --------|:-------------:|
+| - | Regular file, such as an ASCII text file, binary executable, or hard link | 
+| b | Block special file. Block input/output device file such as a physical hard drive    |
+| c | Character special file. Raw input/output device file such as a physical hard drive |
+| d | Directory file that contains a listing of other files and directories |
+| l | Symbolic link file. Links on any regular file |
+| p | Named pipe. A mechanism for interprocess communications |
+| s | Socket used for interprocess communication |
+
+#### if... fi statements
+Shell equivalent of if statement i.e.
+```console
+#!/bin/sh
+
+a=10
+b=20
+
+if [ $a == $b ]
+then
+   echo "a is equal to b"
+fi
+
+if [ $a != $b ]
+then
+   echo "a is not equal to b"
+fi
+```
 
 ## Programs
 
