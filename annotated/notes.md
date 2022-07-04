@@ -24,6 +24,12 @@ prefixes to specify file type
 | p | Named pipe. A mechanism for interprocess communications |
 | s | Socket used for interprocess communication |
 
+#### [Helpful commands](https://oit.ua.edu/wp-content/uploads/2020/12/Linux_bash_cheat_sheet-1.pdf)
+1. ls (-R, -a, -al): lists contents of directory (working or typed path). -R gives subdirectories, -a gives hidden files, -al gives detailed information
+2. cat: lists contents of file. cat > filename creates new files. 
+3. mv: moves and renames files
+
+
 #### if... fi statements
 Shell equivalent of if statement i.e.
 ```console
