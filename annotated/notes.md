@@ -30,7 +30,7 @@ prefixes to specify file type
 3. mv: moves and renames files
 
 ## Terminology
-- [CIGAR](https://sites.google.com/site/bioinformaticsremarks/bioinfo/sam-bam-format/what-is-a-cigar): string that indicates which bases align (either a match/mismatch) with the reference, are deleted from the reference, and are insertions that are not in the reference.
+- [CIGAR](https://sites.google.com/site/bioinformaticsremarks/bioinfo/sam-bam-format/what-is-a-cigar): (Compact Idiosyncratic Gapped Alignment Report) string that indicates which bases align (either a match/mismatch) with the reference, are deleted from the reference, and are insertions that are not in the reference.
 
 ## Programs
 
