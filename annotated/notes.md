@@ -29,25 +29,8 @@ prefixes to specify file type
 2. cat: lists contents of file. cat > filename creates new files. 
 3. mv: moves and renames files
 
-
-#### if... fi statements
-Shell equivalent of if statement i.e.
-```console
-#!/bin/sh
-
-a=10
-b=20
-
-if [ $a == $b ]
-then
-   echo "a is equal to b"
-fi
-
-if [ $a != $b ]
-then
-   echo "a is not equal to b"
-fi
-```
+## Terminology
+- [CIGAR](https://sites.google.com/site/bioinformaticsremarks/bioinfo/sam-bam-format/what-is-a-cigar): string that indicates which bases align (either a match/mismatch) with the reference, are deleted from the reference, and are insertions that are not in the reference.
 
 ## Programs
 
