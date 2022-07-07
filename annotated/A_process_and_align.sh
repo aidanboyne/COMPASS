@@ -5,6 +5,11 @@
 ## Minimap and graphmap are recently developed, popular aligners, 
 ## but are geared towards long, error prone nanopore reads and not splice junction discovery.
 
+## This pipeline runs the sample through ^ aligners and processing algorithms and outputs a formatted cigar bam 
+
+# Below goes through all possible cases and assigns the respective variable names to their arguments. ";;" is standard syntax for end of line
+# where you have multiple cases
+
 while getopts C:R:S:F:G:A:M:N:P:L:Z: flag;
 do
     case "${flag}" in
@@ -22,6 +27,8 @@ do
     esac
 done
 
+#Display variable assignments to user
+
 echo "COMPASS_DIR: $COMPASS_DIR";
 echo "REFERENCE_DIR: $REFERENCE_DIR";
 echo "SAMPLE: $SAMPLE";
@@ -34,6 +41,9 @@ echo "READ_LENGTH: $READ_LENGTH";
 echo "READS_TO_PROCESS: $READS_TO_PROCESS";
 
 ##################### VARIABLE AND PATH DEFINITIONS BEGIN #####################
+
+#Takes variables assigned above and creates variable names for the specific processing tools
+
 BBMAP_GENOME_DIR=$REFERENCE_DIR"bbmap/"
 
 HISAT2_GENOME_DIR=$REFERENCE_DIR"HISAT2_annotated_index"
@@ -53,6 +63,8 @@ GSNAP_GENOME_DIR=$REFERENCE_DIR"GSNAP/"
 mkdir $GSNAP_GENOME_DIR
 ###################### VARIABLE AND PATH DEFINITIONS END ######################
 
+#more variable naming, these track fastq file as it progresses through pipeline
+
 RAW_FASTQ_DIR=$COMPASS_DIR"fastq/"
 NUMBERED_READS_DIR=$COMPASS_DIR"numbered_reads_fastq/"
 TRIMMED_DIR=$COMPASS_DIR"trimmed_fastq/"
@@ -61,7 +73,7 @@ SEPARATE_ALIGNMENTS_DIR=$COMPASS_DIR"separate_alignments/"
 raw_R1=$RAW_FASTQ_DIR$SAMPLE"_R1.fastq.gz"
 raw_R2=$RAW_FASTQ_DIR$SAMPLE"_R2.fastq.gz"
 
-if [[ $READS_TO_PROCESS -lt 1 ]];
+if [[ $READS_TO_PROCESS -lt 1 ]]; #if any remaining samles left unprocessed
 then
 echo "processing all reads for "$SAMPLE
 else
@@ -85,7 +97,7 @@ numbered_R2=$NUMBERED_READS_DIR$SAMPLE"_numbered_R2.fastq"
 ############################### CUTADAPT BEGIN ################################
 ## TRIM TRUSEQ ADAPTER AND POLY-A TAILS FROM 3' ENDS 
 ## AND LOW QUALITY BASES FROM BOTH ENDS IN ONE STEP WITH CUTADAPT
-## cutadapt version 1.18
+## cutadapt version 1.18 (CURRENT V. AVAILABLE = 4.1)
 
 cutadapt --overlap 2 --cores $NUM_THREADS -q 20,20 -g "T{100}" -a AGATCGGAAGAGC -A AGATCGGAAGAGC -A "A{100}" \
 -n 2 --trim-n --minimum-length 50 --max-n 4 -o $trimmed_R1 -p $trimmed_R2 $raw_R1 $raw_R2
