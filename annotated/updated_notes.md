@@ -4,6 +4,9 @@
  - login: ---
  - PW: ---
  - qrsh (takes you to compute node)
+ 	- Note that for any compute intensive tasks (inlucing all of what is shown below) you need to specify a larger memory 
+ 	  and longer runtime than default. For example `qrsh -l h_rt=4:00:00,h_data=16G` gives 4 hours of runtime and 16GB RAM, which
+	  should be sufficient.
 2. WinSCP
  - check presaved session for details, same PW
 
