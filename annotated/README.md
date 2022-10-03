@@ -1,5 +1,6 @@
-# HOFFMAN
-### Login
+# COMPASS Walkthrough
+
+### Login to Hoffman
 1. MobaXTerm:
  - login: ---
  - PW: ---
@@ -8,7 +9,9 @@
  	  and longer runtime than default. For example `qrsh -l h_rt=4:00:00,h_data=16G` gives 4 hours of runtime and 16GB RAM, which
 	  should be sufficient.
 2. WinSCP
- - check presaved session for details, same PW
+ - Login to host: hoffman2.idre.ucla.edu
+ - Use same username and password, save login details
+ - Allows you to navigate files graphically.
 
 ### Paths to change
 - In COMPASS_install_required_programs.sh: change SCRIPTS="/path/to/scripts/" to directory with the config.yml file ,process_reads_and_align.sh, and other COMPASS.sh bash files. For example, I changed my path to /u/project/guillom/kevinh97/aidanb/kr_compass
@@ -90,8 +93,7 @@ _To run each of the following, input: bash file-name.sh_
 
 #### Known Issues
 - High memory usage. Standard Hoffman account may not support scripts and may cause unexpected termination.
-    - Solution: Move to project-guillom folder which is set up with higher specs.
-- 
+    - Solution: Move to project-guillom folder which is set up with higher specs
 
 ### TODO:
 - Maintain steps.txt as you figure it out
