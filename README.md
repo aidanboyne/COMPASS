@@ -1,18 +1,5 @@
 # COMPASS Walkthrough
 
-### Login to Hoffman
-1. MobaXTerm:
- - login: ---
- - PW: ---
- - qrsh (takes you to compute node)
- 	- Note that for any compute intensive tasks (inlucing all of what is shown below) you need to specify a larger memory 
- 	  and longer runtime than default. For example `qrsh -l h_rt=4:00:00,h_data=16G` gives 4 hours of runtime and 16GB RAM, which
-	  should be sufficient.
-2. WinSCP
- - Login to host: hoffman2.idre.ucla.edu
- - Use same username and password, save login details
- - Allows you to navigate files graphically.
-
 ### Paths to change
 - In COMPASS_install_required_programs.sh: change SCRIPTS="/path/to/scripts/" to directory with the config.yml file ,process_reads_and_align.sh, and other COMPASS.sh bash files. For example, I changed my path to /u/project/guillom/kevinh97/aidanb/kr_compass
 
@@ -52,13 +39,11 @@ Dump SRA file into desired location
 
 ### COMPASS_install_required_programs.sh
 - Installs samfixcigar's bioinformatics toolkits
-- Runs in linux shell
+- Runs in shell
 - sets directory
 - All other programs can be downloaded w/ conda
 
-Note: running bash COMPASS_install_required_programs will cause 2 errors. First is that VM will not be able to allocate as much memory as it wants (this is fine). Second is the COMPASS_environment.yml file will be missing. Copy this file from KR's github into the jvarkit folder that is created and then run the command `conda env create -f COMPASS_environment.yml`*
-
-_*Unfortunatley this causes another error: libgcc-s.so.1 must be installed for pthread-cancel to work.I am not sure how to resolve this at the moment._
+Note: running bash COMPASS_install_required_programs can cause 2 errors. First is that VM will not be able to allocate as much memory as it wants (this is fine). Second is the COMPASS_environment.yml file will be missing. Copy this file from KR's github into the jvarkit folder that is created and then run the command `conda env create -f COMPASS_environment.yml`*
 
 ### COMPASS.sh (run for each sample):	
 
@@ -92,23 +77,4 @@ _To run each of the following, input: bash file-name.sh_
 
 
 #### Known Issues
-- High memory usage. Standard Hoffman account may not support scripts and may cause unexpected termination.
-    - Solution: Move to project-guillom folder which is set up with higher specs
-
-### TODO:
-- Maintain steps.txt as you figure it out
-- Find all locations where user input are required
-    - identify
-    - test w toy set
-    - create single read file
-    - integrate read file
-    - read file formatting and input guide
-- Identify formatting code
-    - find
-    - update to row only (long): For every splice site it has all of the information in different columns, we want it to be in long form where every piece of information is on its own line (just a ton of rows).
-- Identify outdated packages
-	- locations
-	- replacements
-	- testing
-- Hoffman
-    - Transfer all work to project-guillom directory
+- High memory usage. Many VMs may not run out of memory causing unexpected termination.
